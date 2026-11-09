@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f5">
+<title>Love System • 1 năm 7 tháng</title>
+<style>
+:root{--pink:#ff6f9f;--deep:#9b4268;--ink:#503344;--bg:#fff7fa}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top left,#ffe0eb,transparent 42%),linear-gradient(145deg,#fff8fb,#ffeef4);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);overflow-x:hidden}
+.floating-heart{position:fixed;bottom:-40px;left:var(--x);font-size:var(--size);opacity:0;pointer-events:none;animation:floatUp var(--duration) linear forwards;z-index:0}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.65}90%{opacity:.45}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+main{position:relative;z-index:1}
+main{width:min(100%,560px);background:#ffffffd9;border:1px solid #ffd5e3;border-radius:28px;padding:30px 24px;box-shadow:0 18px 60px #b85b7b20;text-align:center}
+.tag{display:inline-block;border-radius:99px;background:#fff0f5;color:var(--deep);padding:8px 14px;font-size:12px;font-weight:800;letter-spacing:.08em}
+h1{font-size:clamp(27px,7vw,40px);line-height:1.15;margin:18px 0 8px;color:#b84f78}
+.sub{color:#94677a;margin:0 0 22px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:20px 0}
+.unit{background:#fff3f7;border:1px solid #ffe0e9;border-radius:16px;padding:14px 5px}
+.num{font-size:clamp(24px,7vw,34px);font-weight:850;color:#c44f7d;font-variant-numeric:tabular-nums}
+.lbl{font-size:11px;color:#94677a;margin-top:3px}
+.message{background:#fff8fb;border-radius:18px;padding:19px 17px;line-height:1.75;text-align:left;margin-top:22px}
+.message strong{color:#b84f78}
+ .footer{font-size:13px;color:#a47a8c;margin-top:20px}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.action{border:0;border-radius:999px;padding:12px 17px;background:#ffe2ec;color:#994465;font-weight:750;font-size:14px;cursor:pointer;box-shadow:0 5px 16px #b85b7b16}
+.action.primary{background:#d95787;color:white}
+.action:active{transform:scale(.98)}
+.secret{display:none;margin-top:15px;padding:16px;border:1px dashed #f3a9c2;border-radius:16px;background:#fff2f7;line-height:1.7;text-align:center}
+.secret.show{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.music-note{font-size:12px;color:#a47a8c;margin-top:9px}
+.heart{font-size:30px;animation:pulse 1.5s infinite}@keyframes pulse{50%{transform:scale(1.16)}}
+@media(max-width:360px){main{padding:24px 15px}.timer{gap:6px}.unit{padding:12px 2px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="tag">🔔 LOVE SYSTEM • UPDATE HOÀN TẤT</div>
+  <h1>1 năm 7 tháng<br>của tụi mìnhmm 💗</h1>
+  <p class="sub">Từ ngày 10/04/2025 đến hôm nay — vẫn là hai đứa mình.</p>
+  <div class="heart">💞</div>
+  <div class="timer" aria-label="Thời gian bên nhau">
+    <div class="unit"><div class="num" id="days">—</div><div class="lbl">NGÀY</div></div>
+    <div class="unit"><div class="num" id="hours">—</div><div class="lbl">GIỜ</div></div>
+    <div class="unit"><div class="num" id="minutes">—</div><div class="lbl">PHÚT</div></div>
+    <div class="unit"><div class="num" id="seconds">—</div><div class="lbl">GIÂY</div></div>
+  </div>
+  <section class="message">
+    <strong>📢 Thông báo từ hệ thống:</strong><br>
+    Phiên bản tình iu đã được nâng cấp lên <strong>1 năm 7 tháng</strong>!<br><br>
+    Các chức năng yêu thương, nhớ nhung và quan tâm iem vẫn đang hoạt động ổn định. Riêng chức năng hết thương iem hiện không tìm thấy trong hệ thống =))))<br><br>
+    Cảm ơn iemmm vì đã cùng anh đi qua thêm một cột mốc nữa. Mong rằng tháng sau, rồi nhiều tháng sau nữa, hệ thống vẫn được cập nhật cùng đúng một người là iem. ❤️
+  </section>
+  <div class="actions">
+    <button class="action primary" id="secretBtn">💌 Bấm vào đây nhận lời nhắn bí mật</button>
+    <button class="action" id="musicBtn">🎵 Bật nhạc nhẹ</button>
+  </div>
+  <div class="secret" id="secret">
+    <strong>Gửi iemmm 💗</strong><br>
+    Nếu được chọn lại từ đầu, anh vẫn muốn bước vào cuộc sống của iem — vẫn muốn cùng iem tạo thêm thật nhiều kỷ niệm. Cảm ơn vì đã là một phần đáng yêu trong cuộc sống của anh. Thương iemmm! 🥺
+  </div>
+  <div class="music-note" id="musicNote">Nhạc nền giai điệu tự tạo • Chạm “Bật nhạc nhẹ” để nghe</div>
+  <div class="footer">Made with love • Hẹn gặp ở bản update tiếp theo 🫶</div>
+</main>
+<script>
+const start = new Date('2025-04-10T00:00:00+07:00').getTime();
+function update(){
+  let diff=Math.max(0,Date.now()-start);
+  const d=Math.floor(diff/86400000); diff%=86400000;
+  const h=Math.floor(diff/3600000); diff%=3600000;
+  const m=Math.floor(diff/60000); diff%=60000;
+  const s=Math.floor(diff/1000);
+  document.getElementById('days').textContent=d;
+  document.getElementById('hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+  document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+}
+update();setInterval(update,1000);
+
+// Trái tim bay nhẹ nhàng trong nền
+const heartChars = ["💗","💕","💖","♡","💞"];
+function makeHeart(){
+  const el=document.createElement("span");
+  el.className="floating-heart";
+  el.textContent=heartChars[Math.floor(Math.random()*heartChars.length)];
+  el.style.setProperty("--x",Math.random()*100+"vw");
+  el.style.setProperty("--size",(14+Math.random()*18)+"px");
+  el.style.setProperty("--duration",(7+Math.random()*6)+"s");
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),14000);
+}
+setInterval(makeHeart,850);
+
+// Lời nhắn bí mật
+document.getElementById("secretBtn").addEventListener("click",()=>{
+  const box=document.getElementById("secret");
+  box.classList.toggle("show");
+  document.getElementById("secretBtn").textContent=box.classList.contains("show")?"💗 Đóng lời nhắn":"💌 Bấm vào đây nhận lời nhắn bí mật";
+});
+
+// Giai điệu synth nguyên bản, chỉ phát khi người xem chủ động bật
+let audioCtx=null, musicTimer=null, musicOn=false, noteIndex=0;
+const melody=[523.25,659.25,783.99,659.25,587.33,659.25,698.46,587.33];
+function playNote(){
+  if(!audioCtx || !musicOn) return;
+  const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+  osc.type="sine"; osc.frequency.value=melody[noteIndex%melody.length];
+  gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.045,audioCtx.currentTime+0.06);
+  gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.48);
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  osc.start(); osc.stop(audioCtx.currentTime+0.5);
+  noteIndex++;
+}
+document.getElementById("musicBtn").addEventListener("click",async()=>{
+  const btn=document.getElementById("musicBtn");
+  const note=document.getElementById("musicNote");
+  if(!musicOn){
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContext){note.textContent="Trình duyệt này chưa hỗ trợ phát nhạc.";return;}
+    audioCtx=audioCtx||new AudioContext();
+    if(audioCtx.state==="suspended") await audioCtx.resume();
+    musicOn=true; playNote(); musicTimer=setInterval(playNote,560);
+    btn.textContent="🔇 Tắt nhạc"; note.textContent="Đang phát giai điệu tình iu tự tạo 🎶";
+  }else{
+    musicOn=false; clearInterval(musicTimer);
+    if(audioCtx) await audioCtx.suspend();
+    btn.textContent="🎵 Bật nhạc nhẹ"; note.textContent="Nhạc đã tạm dừng.";
+  }
+});
+</script>
+</body>
+</html>
